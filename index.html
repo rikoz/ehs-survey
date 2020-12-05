@@ -27,8 +27,7 @@
         <div class="row px-2">
           <div class="col-sm-6 col-lg-8 mx-auto bg-white border rounded my-1 p-3">
             <h3>Patient Evaluation</h3>
-            <p>Thank you for participating in our experience survey. We hope your needs and expectations were met.</p>
-            <p>Please fill out this quick survey to enable us continue to provide top notch service.</p>
+            <p>{{ survey.description }}</p>
             <p class="text-danger">* Required</p>
           </div>
         </div>
@@ -55,8 +54,8 @@
                       <div class="col rating mb-3">
                         <span>{{ option }}</span><br>
                         <template v-for="i in question.ratings.split('\r\n').length">
-                          <input type="radio" :id="`${question.id}-${index + 1}-${i}`" :name="`${question.id}-${index + 1}`" :value="i" @change="handleRating">
-                          <label :for="`${question.id}-${index + 1}-${i}`" class="star" :title="question.ratings.split('\r\n')[i-1]" aria-hidden="true"></label>
+                          <input type="radio" :id="`${question.id}-${index + 1}-${question.ratings.split('\r\n').length - (i - 1)}`" :name="`${question.id}-${index + 1}`" :value="i" @change="handleRating">
+                          <label :for="`${question.id}-${index + 1}-${question.ratings.split('\r\n').length - (i - 1)}`" class="star" :title="question.ratings.split('\r\n')[i-1]" aria-hidden="true"></label>
                         </template>
                       </div>
                     </div>

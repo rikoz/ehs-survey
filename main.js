@@ -15,8 +15,7 @@ var app = new Vue({
           this.answers = this.survey.data.questions.map(question => {
             return {
               question: question.id,
-              text: question.answer_type == 'Multiselect' ? [] : (question.answer_type == 'Rating' ? new Array(question.options.split('\r\n').length) : ''),
-              patient: '936825c1-2c15-43bb-9d7b-13d8d807857d'
+              text: question.answer_type == 'Multiselect' ? [] : (question.answer_type == 'Rating' ? new Array(question.options.split('\r\n').length) : '')
             }
           })
         })
@@ -54,8 +53,6 @@ var app = new Vue({
       if (e.target.checked) {
         theObj.text[optionId-1] = e.target.value
       }
-
-      console.log(theObj)
     },
     handleText (e) {
       const qid = e.srcElement.id
