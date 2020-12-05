@@ -2,7 +2,7 @@ var app = new Vue({
   el: '#app',
   data() {
     return {
-      paramz: window.location.pathname,
+      paramz: window.location.pathname || '1/7a3ee186/',
       apiURL: 'https://esh-survey.herokuapp.com',
       survey: null,
       answers: [],
