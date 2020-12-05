@@ -3,7 +3,7 @@ var app = new Vue({
   data() {
     return {
       paramz: window.location.pathname,
-      apiURL: 'https://esh-survey.herokuapp.com/2/936825c1-2c15-43bb-9d7b-13d8d807857d',
+      apiURL: 'https://esh-survey.herokuapp.com',
       survey: null,
       answers: [],
       submitted: false,
@@ -13,7 +13,7 @@ var app = new Vue({
   },
   methods: {
     async fetchQuestion () {
-      await axios.get(this.apiURL)
+      await axios.get(`${this.apiURL}${this.paramz}`)
         .then(resp => {
           this.survey = resp.data
           this.answers = this.survey.data.questions.map(question => {
@@ -30,7 +30,7 @@ var app = new Vue({
     },
 
     submitAnswers () {
-      axios.post(this.apiURL, {
+      axios.post(`${this.apiURL}${this.paramz}`, {
         text: this.answers
       })
         .then(resp => {
