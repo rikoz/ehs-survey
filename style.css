@@ -90,3 +90,7 @@ h5 {
 .rating > input:checked ~ label:hover ~ label {
   color: #FECE31;
 }
+
+.m-box {
+  max-width: 420px;
+}

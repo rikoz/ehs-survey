@@ -2,14 +2,18 @@ var app = new Vue({
   el: '#app',
   data() {
     return {
-      message: 'Hello Vue!',
+      paramz: window.location.pathname,
+      apiURL: 'https://esh-survey.herokuapp.com/2/936825c1-2c15-43bb-9d7b-13d8d807857d',
       survey: null,
-      answers: []
+      answers: [],
+      submitted: false,
+      message: '',
+      error: false
     }
   },
   methods: {
     async fetchQuestion () {
-      await axios.get('https://esh-survey.herokuapp.com/2/936825c1-2c15-43bb-9d7b-13d8d807857d')
+      await axios.get(this.apiURL)
         .then(resp => {
           this.survey = resp.data
           this.answers = this.survey.data.questions.map(question => {
@@ -20,17 +24,30 @@ var app = new Vue({
           })
         })
         .catch(err => {
-          console.log(err)
+          this.message = err.response.data.message
+          this.error = true
         })
     },
+
     submitAnswers () {
-      axios.post('https://esh-survey.herokuapp.com/2/936825c1-2c15-43bb-9d7b-13d8d807857d', {
+      axios.post(this.apiURL, {
         text: this.answers
       })
         .then(resp => {
-          console.log(resp)
+          if (resp.status == 200 && resp.data.status == 'success') {
+            this.message = resp.data.message
+            this.submitted = true
+            this.survey = null
+          } else {
+            this.message = resp.data.message
+          }
+        })
+        .catch(err => {
+          this.message = err.response.data.message
+          this.error = true
         })
     },
+
     handleMSelect (e) {
       const qid = e.srcElement.id
       const itemIndex = this.answers.findIndex(entry => entry.question == qid)
@@ -43,6 +60,7 @@ var app = new Vue({
         theObj.text.splice(itemIndex, 1)
       }
     },
+
     handleRating (e) {
       const qid = e.srcElement.name.split('-')[0]
       const itemIndex = this.answers.findIndex(entry => entry.question == qid)
@@ -54,6 +72,7 @@ var app = new Vue({
         theObj.text[optionId-1] = e.target.value
       }
     },
+
     handleText (e) {
       const qid = e.srcElement.id
       const itemIndex = this.answers.findIndex(entry => entry.question == qid)
