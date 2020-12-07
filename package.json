@@ -1,0 +1,25 @@
+{
+  "name": "survey",
+  "version": "1.0.0",
+  "description": "EHS survey",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rikoz/ehs-survey.git"
+  },
+  "author": "Rikome Erezi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rikoz/ehs-survey/issues"
+  },
+  "homepage": "https://github.com/rikoz/ehs-survey#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "open": "^7.3.0"
+  }
+}

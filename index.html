@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <html lang="en">
 <head>
+  <base href="/" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Survey Now</title>
@@ -11,8 +12,9 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="style.css">
   
-  <script src="vue.js"></script>
-  <script src="axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
   <div class="container minH-100 maxW-100">
@@ -60,10 +62,22 @@
                     </div>
                   </div>
                   <div v-else-if="question.answer_type == 'Paragraph'">
-                    <textarea :name="`${question.id}`" :id="`${question.id}`" class="form-control" cols="80" rows="10"></textarea>
+                    <textarea
+                      :name="`${question.id}`"
+                      :id="`${question.id}`"
+                      class="form-control"
+                      style="white-space: pre-wrap; overflow-wrap: break-word;"
+                      cols="80"
+                      rows="10"
+                      @input="handleText"></textarea>
                   </div>
                   <div v-else>
-                    <input type="text" class="form-control" :name="`${question.id}`" :id="`${question.id}`" @input="handleText">
+                    <input
+                      type="text"
+                      class="form-control"
+                      :name="`${question.id}`"
+                      :id="`${question.id}`"
+                      @input="handleText">
                   </div>
 
                 </div>
