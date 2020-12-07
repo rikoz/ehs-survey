@@ -6,6 +6,14 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+.banner {
+  background-image: url('https://lh6.googleusercontent.com/gH1WB5hUKsFasqI5r7_gLUO0BAAA0rlly_EPb8HGwBa42AYhh9UJFrCpeYRmblSpTl1ELayn4ZkVfYPtScp0Kjw8I5Psho7WmwCD98iI1EKc_y4MiDkKnihzLsYb=w803');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 150px;
+}
+
 h5 {
   color: gray;
 }

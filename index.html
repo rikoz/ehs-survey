@@ -21,16 +21,16 @@
     <div id="app">
       <div v-if="survey && survey.data && !error">
         <div class="row">
-          <div class="col-sm-6 col-lg-8 mx-auto bg-white border rounded mb-2 p-3 text-center">
-            <h1>{{ survey.title }}</h1>
+          <div class="col-sm-6 col-lg-8 mx-auto bg-white border rounded mb-2 p-3 text-center banner">
+            <span></span>
           </div>
         </div>
 
         <div class="row px-2">
           <div class="col-sm-6 col-lg-8 mx-auto bg-white border rounded my-1 p-3">
-            <h3>Patient Evaluation</h3>
+            <h3>{{ survey.title }}</h3>
             <p>{{ survey.description }}</p>
-            <p class="text-danger">All fields marked "*" are required</p>
+            <!-- <p class="text-danger">All fields marked "*" are required</p> -->
           </div>
         </div>
 
