@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
-const open = require('open');
+// const open = require('open');
 
 const app = express();
 const port = 80
@@ -24,6 +24,6 @@ app.listen(port, (err) => {
     console.log(err);
   } else {
     console.log(`listening on port ${port}!`)
-    open(`http://localhost:${port}`);
+    // open(`http://localhost:${port}`);
   }
 })
