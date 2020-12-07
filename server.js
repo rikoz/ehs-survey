@@ -4,7 +4,7 @@ const ejs = require('ejs');
 // const open = require('open');
 
 const app = express();
-const port = 4055
+const port = process.env.PORT || 3000
 // var router = express.Router()
 
 app.engine('html', ejs.renderFile)
