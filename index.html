@@ -45,7 +45,7 @@
   
                   <div v-if="question.answer_type == 'Multiselect'" class="multisel">
                     <label v-for="(option, index) in question.options.split('\r\n')" :key="index">
-                      <input type="checkbox" :id="`${question.id}`" :name="`${question.id}-${index}`" :value="option" @change="handleMSelect" required>
+                      <input type="checkbox" :id="`${question.id}`" :name="`${question.id}-${index}`" :value="option" @change="handleMSelect">
                       <span :for="`${question.id}-${index}`" class="label-text"> {{ option }}</span><br>
                     </label>
                   </div>
@@ -55,7 +55,7 @@
                       <div class="col rating mb-3">
                         <span>{{ option }}</span><br>
                         <template v-for="i in question.ratings.split('\r\n').length">
-                          <input type="radio" :id="`${question.id}-${index + 1}-${question.ratings.split('\r\n').length - (i - 1)}`" :name="`${question.id}-${index + 1}`" :value="i" @change="handleRating" required>
+                          <input type="radio" :id="`${question.id}-${index + 1}-${question.ratings.split('\r\n').length - (i - 1)}`" :name="`${question.id}-${index + 1}`" :value="i" @change="handleRating">
                           <label :for="`${question.id}-${index + 1}-${question.ratings.split('\r\n').length - (i - 1)}`" class="star" :title="question.ratings.split('\r\n')[i-1]" aria-hidden="true"></label>
                         </template>
                       </div>
