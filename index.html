@@ -89,7 +89,13 @@
           </ul>
           <div class="row">
             <div class="col-sm-6 col-lg-8 mx-auto">
-              <button type="submit" class="btn btn-primary btn-lg">Send Survey</button>
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg"
+                :disabled="loading">
+                  <span v-if="loading" class="spinner-border spinner-border-sm align-middle" role="status" aria-hidden="true">&nbsp;</span>
+                  <span>Send Survey</span>
+              </button>
             </div>
           </div>
         </form>

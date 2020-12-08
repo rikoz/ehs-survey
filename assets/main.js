@@ -8,7 +8,8 @@ var app = new Vue({
       answers: [],
       submitted: false,
       message: '',
-      error: false
+      error: false,
+      loading: false
     }
   },
   methods: {
@@ -32,6 +33,7 @@ var app = new Vue({
     },
 
     submitAnswers () {
+      this.loading = true
       axios.post(`${this.apiURL}${this.paramz}`, {
         text: this.answers
       })
@@ -46,6 +48,7 @@ var app = new Vue({
         })
         .catch(err => {
           this.message = err.response.data.message
+          this.loading = false
           this.error = true
         })
     },
